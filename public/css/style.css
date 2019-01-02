@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.col {
+  flex: 1 0 50%;
+  margin: 5px;
+}

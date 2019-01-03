@@ -4,9 +4,6 @@ var imageOrder = []
 function sortImageList(imageCountObj) {
   var imageList = []
   // convert object into array
-  console.log('*********here***********')
-  console.log(imageCountObj, '-------------')
-
 	for(var key in imageCountObj)
 		if(imageCountObj.hasOwnProperty(key))
 			imageList.push([key, imageCountObj[key]]);
@@ -16,8 +13,6 @@ function sortImageList(imageCountObj) {
 	{
 	  return b[1]-a[1]; // compare numbers
 	});
-
-  console.log(imageList)
 
   //PUSH IMAGE LIST TO HTML
   $('#imageListByCount').empty();
@@ -41,9 +36,6 @@ function trackImageCount (e) {
     imageCount[currImage] = 1
   }
 
-  //console.log(currImage)
-  //console.log(imageCount)
-
   sortImageList(imageCount)
 }
 
@@ -65,16 +57,19 @@ function setImageOrder (e) {
 $(document).ready(function () {
 
   //set image load order
-  if (imageOrder in localStorage) {
+  if (localStorage.getItem("imageOrder") !== null) {
+    console.log('******here********');
     var storedImageOrder = JSON.parse(localStorage.getItem("imageOrder"));
-    document.getElementById("image0")[0].src = storedImageOrder[0];
-    document.getElementById("image1")[0].src = storedImageOrder[1];
-    document.getElementById("image2")[0].src = storedImageOrder[2];
-    document.getElementById("image3")[0].src = storedImageOrder[3];
-    document.getElementById("image4")[0].src = storedImageOrder[4];
-    document.getElementById("image5")[0].src = storedImageOrder[5];
-    document.getElementById("image6")[0].src = storedImageOrder[6];
-    document.getElementById("image7")[0].src = storedImageOrder[7];
+    console.log(storedImageOrder);
+    document.getElementById("image0").src = storedImageOrder[0];
+    document.getElementById("image1").src = storedImageOrder[1];
+    document.getElementById("image2").src = storedImageOrder[2];
+    document.getElementById("image3").src = storedImageOrder[3];
+    document.getElementById("image4").src = storedImageOrder[4];
+    document.getElementById("image5").src = storedImageOrder[5];
+    document.getElementById("image6").src = storedImageOrder[6];
+    document.getElementById("image7").src = storedImageOrder[7];
+    localStorage.removeItem("imageOrder");
   }
 
   $(".image").on("click", function (e) {
